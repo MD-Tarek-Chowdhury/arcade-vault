@@ -10,7 +10,7 @@ class GameController extends Controller
 {
     public function index(Game $model)
     {
-        $game = Game::all();
+        $game = Game::all(); // Game::all() is the Model itself
         return Inertia::render('ArcadeDashboard', [
             'game' => $game
         ]);
