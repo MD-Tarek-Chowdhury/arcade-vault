@@ -35,4 +35,16 @@ class GameController extends Controller
 
         return back()->with('message', 'Game added successfully');
     }
+
+    public function update(Request $request, Game $game): RedirectResponse
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:20|min:3',
+            'emulator' => 'required|string|max:20|min:5',
+        ]);
+
+        $game->update($validated);
+
+        return back()->with('message', 'Game updated successfully');
+    }
 }
