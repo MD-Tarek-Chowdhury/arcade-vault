@@ -24,12 +24,12 @@ const deleteGame = (id) => {
             <ul>
                 <li v-for="item in game" :key="item.id"">
                     <strong> {{ item.title }} </strong> - {{ item.emulator }}
+
+                    <button @click="deleteGame(item.id)" style="color: red; margin-left: 20px">
+                        Delete
+                    </button>
                 </li>
             </ul>
-
-            <button @click="deleteGame(item.id)" style="color: red; margin-left: 20px">
-                Delete
-            </button>
 
         </article>
     </main>
