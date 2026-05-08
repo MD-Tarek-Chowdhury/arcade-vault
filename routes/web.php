@@ -11,6 +11,7 @@ Route::inertia('/', 'Welcome', [
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [GameController::class, 'index'])->name('dashboard');
     Route::delete('/game/{game}', [GameController::class, 'destroy'])->name('game.destroy');
+    Route::post('/game', [GameController::class, 'store'])->name('game.store');
 });
 
 require __DIR__.'/settings.php';
