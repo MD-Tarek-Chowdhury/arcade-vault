@@ -1,8 +1,17 @@
 <script setup>
-import { Link } from "@inertiajs/vue3"
+import { Link, router } from "@inertiajs/vue3"
 
 const props = defineProps(['game'])
 console.log(props.game)
+
+const deleteGame = (id) => {
+  if (confirm('Are you sure you want to delete this game?')) {
+    router.delete(`/game/${id}`, {
+      onFinish: () => { /* optional cleanup */ },
+      preserveScroll: true // Keeps the user's scroll position
+    })
+  }
+}
 
 </script>
 
@@ -17,6 +26,11 @@ console.log(props.game)
                     <strong> {{ item.title }} </strong> - {{ item.emulator }}
                 </li>
             </ul>
+
+            <button @click="deleteGame(item.id)" style="color: red; margin-left: 20px">
+                Delete
+            </button>
+
         </article>
     </main>
 </template>
