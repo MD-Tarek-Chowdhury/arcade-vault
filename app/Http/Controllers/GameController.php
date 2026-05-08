@@ -24,7 +24,7 @@ class GameController extends Controller
         return back()->with('success', 'Game deleted successfully.');
     }
 
-    public function store(Request $request) RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
             'title' => 'required|string|max:20|min:3',
